@@ -1,0 +1,24 @@
+# Dependencias
+node_modules/
+
+# Variables sensibles / locales
+.env
+
+# Build
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Cache HLS del edge
+storage/hls/
+
+# Archivos temporales
+tmp/
+temp/
