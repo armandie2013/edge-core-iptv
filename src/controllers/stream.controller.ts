@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import axios from "axios";
 import { env } from "../config/env";
+import { trackStreamRequest } from "../services/metrics.service";
 
 async function resolveOriginStreamUrl(channelId: string) {
   const originUrl = `${env.ORIGIN_BASE_URL}/stream/${channelId}`;
@@ -24,29 +25,19 @@ async function resolveOriginStreamUrl(channelId: string) {
 }
 
 export async function streamController(req: Request, res: Response) {
-  try {
-    const rawChannelId = req.params.channelId;
-    const channelId = Array.isArray(rawChannelId)
-      ? rawChannelId[0]
-      : rawChannelId;
+  const rawChannelId = req.params.channelId;
+  const channelId = Array.isArray(rawChannelId)
+    ? rawChannelId[0]
+    : rawChannelId;
 
-    if (!channelId || channelId.length < 5) {
-      return res.status(400).json({
-        ok: false,
-        message: "Canal inválido",
-      });
-    }
-
-    const finalStreamUrl = await resolveOriginStreamUrl(channelId);
-
-    return res.redirect(finalStreamUrl);
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Error interno en edge";
-
-    return res.status(500).json({
+  if (!channelId || channelId.length < 5) {
+    return res.status(400).json({
       ok: false,
-      message,
+      message: "Canal inválido",
     });
   }
+
+  trackStreamRequest(channelId);
+
+  return res.redirect(`/hls/${channelId}/index.m3u8`);
 }

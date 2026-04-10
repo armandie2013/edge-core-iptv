@@ -18,4 +18,8 @@ export const env = {
   CHANNEL_IDLE_TIMEOUT_MS: Number(
     process.env.CHANNEL_IDLE_TIMEOUT_MS || 0
   ),
+
+  PLAYLIST_CACHE_TTL_MS: Number(
+    process.env.PLAYLIST_CACHE_TTL_MS || 3000
+  ),
 };

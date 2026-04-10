@@ -10,15 +10,27 @@
   },
   "dependencies": {
     "axios": "^1.11.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0"
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.3.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.12.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.2"
-  }
+    "typescript": "^5.9.3"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armandie2013/edge-core-iptv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/armandie2013/edge-core-iptv/issues"
+  },
+  "homepage": "https://github.com/armandie2013/edge-core-iptv#readme"
 }
